@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Víctor Chacón Cintado · Portfolio</title>
+  <meta name="description" content="Víctor Chacón Cintado, 20 años, Jerez de la Frontera. Desarrollador web (Técnico Superior en DAW) y Técnico en Sistemas Microinformáticos y Redes. Creador de PokéVersus.">
+  <meta name="author" content="Víctor Chacón Cintado">
+  <meta name="theme-color" content="#07060A">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Víctor Chacón Cintado · Portfolio">
+  <meta property="og:description" content="Desarrollador web. Creador de PokéVersus: más de 20.000 jugadores y 400.000 partidas.">
+  <meta property="og:image" content="assets/img/pv-shot2.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307060A'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%23FF7A45' stroke-width='5'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23FFC46B'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    document.documentElement.classList.add('js');
+    /* Si algo falla al cargar el 3D, la web se muestra igual */
+    setTimeout(function () { document.documentElement.classList.add('ready'); }, 4000);
+  </script>
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+  <!-- Pantalla de carga -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__label">Inicializando modelo</span>
+      <span class="loader__num" id="loader-num">0</span>
+      <span class="loader__bar"><span id="loader-bar"></span></span>
+    </div>
+  </div>
+
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span></span></div>
+
+  <header class="nav">
+    <a class="logo" href="#inicio" aria-label="Inicio">
+      <span class="logo__orb" aria-hidden="true"></span>
+      <span>Víctor Chacón</span>
+    </a>
+    <nav class="nav__links" aria-label="Secciones">
+      <a href="#como-trabajo">Cómo trabajo</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#trayectoria">Trayectoria</a>
+    </nav>
+    <a class="nav__cta" href="#contacto"><span class="pulse" aria-hidden="true"></span>Disponible</a>
+  </header>
+
+  <!-- Indicador lateral de escenas -->
+  <ol class="rail" aria-hidden="true">
+    <li><span>Inicio</span></li>
+    <li><span>Cómo trabajo</span></li>
+    <li><span>Proyectos</span></li>
+    <li><span>Trayectoria</span></li>
+    <li><span>Contacto</span></li>
+  </ol>
+
+  <main>
+    <!-- 0 · INICIO -->
+    <section class="scene hero" id="inicio" data-scene="0">
+      <div class="wrap">
+        <h1 class="hero__title" aria-label="Víctor Chacón Cintado">
+          <span class="line"><span class="split">Víctor</span></span>
+          <span class="line"><span class="split grad">Chacón</span></span>
+          <span class="line line--small"><span class="split">Cintado</span></span>
+        </h1>
+        <p class="hero__lede reveal">
+          Tengo 20 años y soy de Jerez de la Frontera. Soy <strong>desarrollador web</strong>:
+          Técnico Superior en Desarrollo de Aplicaciones Web y Técnico en Sistemas Microinformáticos y Redes.
+          Construyo webs y juegos para el navegador apoyándome en la inteligencia artificial.
+        </p>
+        <div class="hero__cta reveal">
+          <a class="btn btn--solid magnetic" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn--line magnetic" href="#contacto">Hablemos</a>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><span></span>Desliza</div>
+    </section>
+
+    <!-- 1 · CÓMO TRABAJO -->
+    <section class="scene" id="como-trabajo" data-scene="1">
+      <div class="wrap split-layout">
+        <div class="col">
+          <div class="panel reveal">
+            <p class="kicker">01 — Cómo trabajo</p>
+            <h2 class="h2">Desarrollo web con <span class="grad">IA</span>, de la idea a producción.</h2>
+            <p class="body">
+              Trabajo con <strong>vibecoding</strong>: yo decido qué hay que construir, cómo se organiza y cuándo está bien hecho;
+              la IA escribe gran parte del código y yo la dirijo, reviso lo que genera y lo pruebo hasta que funciona en producción.
+              Me gusta probar cada modelo nuevo para ver hasta dónde llega.
+            </p>
+          </div>
+          <ol class="steps">
+            <li class="glass reveal"><span class="steps__n mono">01</span><div><h3>Idea</h3><p>Qué hay que hacer, para quién y cómo se va a usar.</p></div></li>
+            <li class="glass reveal"><span class="steps__n mono">02</span><div><h3>Prompt</h3><p>Le explico a la IA el objetivo con contexto y límites, como a un compañero.</p></div></li>
+            <li class="glass reveal"><span class="steps__n mono">03</span><div><h3>Iterar</h3><p>Reviso, pido cambios concretos y no acepto código que no entienda.</p></div></li>
+            <li class="glass reveal"><span class="steps__n mono">04</span><div><h3>Publicar</h3><p>Despliego, mido cómo se usa, corrijo fallos y saco versiones nuevas.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · PROYECTOS -->
+    <section class="scene" id="proyectos" data-scene="2">
+      <div class="wrap">
+        <p class="kicker reveal">02 — Proyectos</p>
+        <h2 class="h2 reveal">Juegos publicados y en línea.</h2>
+        <p class="body body--muted reveal">Los firmo como <strong>Chacoon</strong> en itch.io y como <strong>Fl3xix</strong> en PokéVersus.</p>
+
+        <article class="feature tilt reveal">
+          <a class="feature__media" href="https://pokeversus.com" target="_blank" rel="noopener">
+            <img src="assets/img/pv-shot2.jpg" alt="Partida de PokéVersus: combate 3 contra 3 en un mapa de hierba" width="1920" height="1080">
+            <span class="live"><span class="pulse" aria-hidden="true"></span>Online · pokeversus.com</span>
+          </a>
+          <div class="feature__body">
+            <p class="tag mono">Proyecto principal · 2026</p>
+            <h3 class="feature__title">PokéVersus</h3>
+            <p>Juego multijugador online de combates 3 contra 3 que se juega en el navegador, en PC y en móvil, sin descargar nada. Lo he diseñado y programado yo solo con IA, y lo mantengo con actualizaciones y eventos.</p>
+            <dl class="specs">
+              <div><dt>Visitas</dt><dd>+60.000</dd></div>
+              <div><dt>Jugadores distintos</dt><dd>+20.000</dd></div>
+              <div><dt>Partidas jugadas</dt><dd>+400.000</dd></div>
+              <div><dt>Récord a la vez</dt><dd>+150</dd></div>
+            </dl>
+            <ul class="chips">
+              <li>Servidor en Hetzner</li><li>WebSocket</li><li>Firebase</li><li>Cloudflare Workers</li><li>WebRTC</li><li>Canvas 2D</li><li>PWA</li>
+            </ul>
+            <div class="feature__cta">
+              <a class="btn btn--solid magnetic" href="https://pokeversus.com" target="_blank" rel="noopener">Jugar ahora</a>
+              <a class="btn btn--line magnetic" href="https://chacoon.itch.io/pokeversus" target="_blank" rel="noopener">itch.io</a>
+            </div>
+            <p class="fine">Fangame no oficial y sin ánimo de lucro. Pokémon es marca de sus respectivos dueños.</p>
+          </div>
+        </article>
+
+        <!-- Arquitectura real de PokéVersus -->
+        <div class="arch reveal">
+          <p class="tag mono">Así está hecho PokéVersus</p>
+          <div class="flow" aria-label="Los jugadores se conectan por WebSocket a un servidor propio en Hetzner">
+            <div class="node"><span class="mono">Navegador · móvil</span><b>Jugadores</b></div>
+            <div class="link" aria-hidden="true"><i></i><span class="mono">WebSocket</span></div>
+            <div class="node node--srv"><span class="mono">VPS · Hetzner</span><b>Servidor propio</b></div>
+          </div>
+          <p class="arch__lead">Las partidas corren en mi propio servidor con el mismo motor que el juego web, y cada jugador se conecta a él en tiempo real. Si el servidor no responde, el juego sigue funcionando con otro sistema.</p>
+          <div class="services">
+            <div>
+              <h3>Servidor</h3>
+              <p>VPS en <b>Hetzner</b> con dos servicios propios: uno ejecuta las <b>partidas</b> y otro lleva el <b>chat general</b>, la <b>búsqueda de partida</b> y quién está conectado, todo por WebSocket.</p>
+            </div>
+            <div>
+              <h3>Firebase</h3>
+              <p><b>Authentication</b>: invitado, Google o correo. <b>Firestore</b>: perfiles, amigos, clanes con chat, ranking y guardado en la nube. <b>Realtime Database</b>: salas de amigos, invitaciones y respaldo si el servidor falla.</p>
+            </div>
+            <div>
+              <h3>Cloudflare</h3>
+              <p>Sirve la web y ejecuta <b>Workers</b> para los baneos y para generar credenciales TURN de 24 horas, que permiten jugar entre jugadores por <b>WebRTC</b> cuando hace falta.</p>
+            </div>
+            <div>
+              <h3>Cliente</h3>
+              <p><b>JavaScript</b> y <b>Canvas 2D</b>, sin motor ni frameworks. Instalable como app (PWA) y traducido a 6 idiomas.</p>
+            </div>
+          </div>
+          <p class="arch__note mono">Un panel de estadísticas propio mide visitas, partidas, jugadores y consumo de cada servicio para ver por dónde escalar.</p>
+        </div>
+
+        <!-- Para añadir un juego, copia un <article class="card"> -->
+        <div class="cards">
+          <article class="card tilt reveal">
+            <a href="https://chacoon.itch.io/scrap-riot" target="_blank" rel="noopener">
+              <div class="card__img"><img src="assets/img/scrap-riot.png" alt="Portada de Scrap Riot" width="315" height="250" loading="lazy"></div>
+              <div class="card__body">
+                <h3>Scrap Riot</h3>
+                <p>Roguelite de arena: un robot de chatarra contra 20 oleadas.</p>
+                <p class="card__meta mono"><span>Windows</span></p>
+              </div>
+            </a>
+          </article>
+          <article class="card tilt reveal">
+            <a href="https://chacoon.itch.io/inspector-chacoon" target="_blank" rel="noopener">
+              <div class="card__img"><img src="assets/img/inspector-chacoon.png" alt="Portada de Inspector Chacoon" width="315" height="250" loading="lazy"></div>
+              <div class="card__body">
+                <h3>Inspector Chacoon</h3>
+                <p>Puzle de lógica con asesinatos: encuentra al culpable.</p>
+                <p class="card__meta mono"><span>Godot</span><span>Windows</span></p>
+              </div>
+            </a>
+          </article>
+          <article class="card tilt reveal">
+            <a href="https://chacoon.itch.io/tiny-bastion" target="_blank" rel="noopener">
+              <div class="card__img"><img src="assets/img/tiny-bastion.png" alt="Portada de Tiny Bastion" width="315" height="250" loading="lazy"></div>
+              <div class="card__body">
+                <h3>Tiny Bastion</h3>
+                <p>Tower defense con 8 mapas, 8 jefes y modo infinito.</p>
+                <p class="card__meta mono"><span>Godot</span><span>Navegador</span></p>
+              </div>
+            </a>
+          </article>
+          <article class="card tilt reveal">
+            <a href="https://chacoon.itch.io/just-one-more-coin" target="_blank" rel="noopener">
+              <div class="card__img"><img src="assets/img/just-one-more-coin.png" alt="Portada de Just One More Coin" width="315" height="250" loading="lazy"></div>
+              <div class="card__body">
+                <h3>Just One More Coin</h3>
+                <p>Incremental de la máquina de empujar monedas.</p>
+                <p class="card__meta mono"><span>Godot</span></p>
+              </div>
+            </a>
+          </article>
+        </div>
+        <p class="more reveal"><a href="https://chacoon.itch.io" target="_blank" rel="noopener">Todos mis juegos y demos en chacoon.itch.io →</a></p>
+      </div>
+    </section>
+
+    <!-- 3 · TRAYECTORIA -->
+    <section class="scene" id="trayectoria" data-scene="3">
+      <div class="wrap split-layout">
+        <div class="col">
+          <p class="kicker reveal">03 — Trayectoria</p>
+          <h2 class="h2 reveal">Formación, experiencia e <span class="grad">idiomas</span>.</h2>
+
+          <ol class="timeline">
+            <li class="reveal">
+              <span class="timeline__when mono">Enero 2027</span>
+              <h3>Curso de Especialización en Ciberseguridad</h3>
+              <p>Ciberseguridad en Entornos de las Tecnologías de la Información.</p>
+              <span class="badge badge--next">Próximamente</span>
+            </li>
+            <li class="reveal">
+              <span class="timeline__when mono">2026</span>
+              <h3>Técnico Superior en Desarrollo de Aplicaciones Web</h3>
+              <p>Front-end, back-end, bases de datos, despliegue de aplicaciones y diseño de interfaces.</p>
+              <span class="badge">Titulado</span>
+            </li>
+            <li class="reveal">
+              <span class="timeline__when mono">2024</span>
+              <h3>Técnico en Sistemas Microinformáticos y Redes</h3>
+              <p>Montaje y mantenimiento de equipos, sistemas operativos, redes locales y servicios en red.</p>
+              <span class="badge">Titulado</span>
+            </li>
+          </ol>
+
+          <div class="jobs">
+            <article class="glass reveal">
+              <p class="tag mono">Por mi cuenta</p>
+              <h3>Técnico informático</h3>
+              <p>Diagnostico y reparo ordenadores y portátiles, instalo sistemas y monto equipos. También compro y vendo piezas para reacondicionar ordenadores.</p>
+            </article>
+            <article class="glass reveal">
+              <p class="tag mono">2026</p>
+              <h3>Desarrollador indie · Chacoon</h3>
+              <p>Diseño, programo y publico mis propios juegos. Me encargo de todo: desarrollo, infraestructura, comunidad y redes.</p>
+            </article>
+            <article class="glass reveal">
+              <p class="tag mono">Actualidad</p>
+              <h3>Peón de obra</h3>
+              <p>Trabajo físico y en equipo. Puntualidad, prevención de riesgos y terminar lo que empiezo.</p>
+            </article>
+          </div>
+
+          <div class="langs glass reveal">
+            <div class="langs__head">
+              <h3>Idiomas</h3>
+              <span class="mono langs__scale">A1 · A2 · B1 · B2 · C1 · C2</span>
+            </div>
+            <div class="lang"><span>Español</span><span class="meter" style="--v:6;--g:6"></span><span class="mono">Nativo</span></div>
+            <div class="lang"><span>Inglés</span><span class="meter" style="--v:2;--g:3"></span><span class="mono">Preparando B1</span></div>
+            <div class="lang"><span>Francés</span><span class="meter" style="--v:1;--g:2"></span><span class="mono">Preparando A2</span></div>
+            <div class="lang"><span>Alemán</span><span class="meter" style="--v:1;--g:2"></span><span class="mono">Preparando A2</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · CONTACTO -->
+    <section class="scene contact" id="contacto" data-scene="4">
+      <div class="wrap">
+        <p class="kicker reveal">04 — Contacto</p>
+        <h2 class="contact__title reveal">¿Buscas un <span class="grad">desarrollador web</span> o un técnico informático?</h2>
+        <p class="body body--center reveal">
+          Encajo en desarrollo web y también en soporte técnico, reparación y mantenimiento de equipos y redes.
+          Estoy en Jerez de la Frontera, con carnet B y coche propio, y abierto a prácticas y a trabajo en remoto.
+        </p>
+        <div class="mail glass reveal">
+          <a class="mail__addr" id="email" href="mailto:victorchaconcintado@gmail.com">victorchaconcintado@gmail.com</a>
+          <button class="btn btn--solid btn--sm magnetic" id="copy" type="button">Copiar</button>
+        </div>
+        <p class="copied mono" id="copied" role="status" aria-live="polite"></p>
+        <ul class="socials reveal">
+          <li>
+            <a class="magnetic" href="https://chacoon.itch.io" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.137 2.41 2.466 2.41h.024c1.33 0 2.466-1.102 2.466-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612-3.253-.114-5.508-.134-8.87-.133-3.362 0-7.945.053-8.87.133zm6.376 6.477a2.74 2.74 0 0 1-.468.602c-.5.49-1.19.795-1.947.795a2.786 2.786 0 0 1-1.95-.795c-.182-.178-.32-.37-.446-.59-.127.222-.303.412-.486.59a2.788 2.788 0 0 1-1.95.795c-.092 0-.187-.025-.264-.052-.107 1.113-.152 2.176-.168 2.95v.005l-.006 1.167c.02 2.334-.23 7.564 1.03 8.85 1.952.454 5.545.662 9.15.663 3.605 0 7.198-.21 9.15-.664 1.26-1.284 1.01-6.514 1.03-8.848l-.006-1.167v-.004c-.016-.775-.06-1.838-.168-2.95-.077.026-.172.052-.263.052a2.788 2.788 0 0 1-1.95-.795c-.184-.178-.36-.368-.486-.59-.127.22-.265.412-.447.59a2.786 2.786 0 0 1-1.95.794c-.76 0-1.446-.303-1.948-.793a2.74 2.74 0 0 1-.468-.602 2.738 2.738 0 0 1-.463.602 2.787 2.787 0 0 1-1.95.794h-.16a2.787 2.787 0 0 1-1.95-.793 2.738 2.738 0 0 1-.464-.602zm-2.004 2.59v.002c.795.002 1.5 0 2.373.953.687-.072 1.406-.108 2.125-.107.72 0 1.438.035 2.125.107.873-.953 1.578-.95 2.372-.953.376 0 1.876 0 2.92 2.934l1.123 4.028c.832 2.995-.266 3.068-1.636 3.07-2.03-.075-3.156-1.55-3.156-3.025-1.124.184-2.436.276-3.748.277-1.312 0-2.624-.093-3.748-.277 0 1.475-1.125 2.95-3.156 3.026-1.37-.004-2.468-.077-1.636-3.072l1.122-4.027c1.045-2.934 2.545-2.934 2.92-2.934zM12 12.714c-.002.002-2.14 1.964-2.523 2.662l1.4-.056v1.22c0 .056.56.033 1.123.007.562.026 1.124.05 1.124-.008v-1.22l1.4.055C14.138 14.677 12 12.713 12 12.713z"/></svg>
+              <span>itch.io</span>
+            </a>
+          </li>
+          <li>
+            <a class="magnetic" href="https://x.com/fl3xix" target="_blank" rel="noopener" aria-label="X">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="magnetic" href="https://www.tiktok.com/@chacoonstudio" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+              <span>TikTok</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year">2026</span> Víctor Chacón Cintado</span>
+    <span>Hecha con IA y Three.js</span>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
