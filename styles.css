@@ -317,9 +317,9 @@ main, .footer { position: relative; z-index: 3; }
 /* ---------- Trayectoria ---------- */
 .timeline { margin-top: 44px; position: relative; display: grid; gap: 30px; padding-left: 30px; }
 .timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(var(--cool), var(--amber) 35%, var(--stroke)); }
-.timeline li { position: relative; display: grid; gap: 6px; }
-.timeline li::before { content: ""; position: absolute; left: -30px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--amber); }
-.timeline li:first-child::before { border-color: var(--cool); box-shadow: 0 0 14px var(--cool); }
+.timeline > li { position: relative; display: grid; gap: 6px; }
+.timeline > li::before { content: ""; position: absolute; left: -30px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--amber); }
+.timeline > li:first-child::before { border-color: var(--cool); box-shadow: 0 0 14px var(--cool); }
 .timeline__when { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
 .timeline h3 { font-family: var(--f-display); font-size: clamp(1.4rem, 2.4vw, 1.85rem); line-height: 1.05; letter-spacing: -.025em; }
 .timeline p { color: var(--muted); }
@@ -375,4 +375,33 @@ main, .footer { position: relative; z-index: 3; }
   .js .reveal.tilt { transform: perspective(1100px) translateY(40px); }
   .js .reveal.in { opacity: 1; transform: none; }
   .js .reveal.in.tilt { transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+}
+
+/* Módulos de cada grado */
+.study { display: grid; gap: 10px; margin: 10px 0 6px; }
+.study li { display: grid; gap: 4px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--stroke); background: var(--glass); }
+.study li > b { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); font-weight: 500; }
+.study li > span { color: var(--muted); font-size: .95rem; line-height: 1.55; }
+.study li > span b { color: var(--ink); font-weight: 600; }
+.timeline .chips { margin-top: 6px; }
+.jobs .chips { margin-top: 6px; }
+
+/* ---------- Animaciones 3D de la trayectoria ---------- */
+.study { perspective: 1000px; }
+.study li { position: relative; }
+.jobs article { position: relative; }
+.timeline::after { content: ""; position: absolute; left: 4px; top: 8px; width: 3px; height: calc(100% - 16px); border-radius: 3px; transform-origin: top; transform: scaleY(var(--p, 0)); background: linear-gradient(var(--cool), var(--amber) 40%, var(--ember, var(--amber))); box-shadow: 0 0 12px var(--amber); }
+@media (prefers-reduced-motion: no-preference) {
+  /* Los bloques de módulos se despliegan en 3D, uno detrás de otro */
+  .js .study li { opacity: 0; translate: 0 34px -80px; rotate: x 62deg; transition: opacity .8s var(--ease), translate 1s var(--ease), rotate 1s var(--ease), transform .6s var(--ease), border-color .3s; transition-delay: calc(var(--i, 0) * 110ms + 150ms); }
+  .js .in .study li { opacity: 1; translate: none; rotate: none; }
+  /* Las etiquetas giran como fichas */
+  .js .timeline .chips li, .js .jobs .chips li { opacity: 0; rotate: y 90deg; scale: .7; transition: opacity .5s var(--ease), rotate .7s var(--ease), scale .7s var(--ease); transition-delay: calc(var(--i, 0) * 60ms + 600ms); }
+  .js .in .chips li { opacity: 1; rotate: none; scale: 1; }
+  /* El punto de cada etapa se enciende al llegar */
+  .js .timeline > li::before { scale: 0; transition: scale .7s cubic-bezier(.3, 1.8, .5, 1) .2s; }
+  .js .timeline > li.in::before { scale: 1; animation: dot-ping 1.4s ease-out .5s; }
+  @keyframes dot-ping { 0% { box-shadow: 0 0 0 0 rgba(255, 196, 107, .7); } 100% { box-shadow: 0 0 0 16px rgba(255, 196, 107, 0); } }
+  .study li:hover { border-color: rgba(255, 196, 107, .35); }
+  .study li:hover > b { text-shadow: 0 0 12px rgba(255, 196, 107, .6); }
 }
