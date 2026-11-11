@@ -385,3 +385,23 @@ main, .footer { position: relative; z-index: 3; }
 .study li > span b { color: var(--ink); font-weight: 600; }
 .timeline .chips { margin-top: 6px; }
 .jobs .chips { margin-top: 6px; }
+
+/* ---------- Animaciones 3D de la trayectoria ---------- */
+.study { perspective: 1000px; }
+.study li { position: relative; }
+.jobs article { position: relative; }
+.timeline::after { content: ""; position: absolute; left: 4px; top: 8px; width: 3px; height: calc(100% - 16px); border-radius: 3px; transform-origin: top; transform: scaleY(var(--p, 0)); background: linear-gradient(var(--cool), var(--amber) 40%, var(--ember, var(--amber))); box-shadow: 0 0 12px var(--amber); }
+@media (prefers-reduced-motion: no-preference) {
+  /* Los bloques de módulos se despliegan en 3D, uno detrás de otro */
+  .js .study li { opacity: 0; translate: 0 34px -80px; rotate: x 62deg; transition: opacity .8s var(--ease), translate 1s var(--ease), rotate 1s var(--ease), transform .6s var(--ease), border-color .3s; transition-delay: calc(var(--i, 0) * 110ms + 150ms); }
+  .js .in .study li { opacity: 1; translate: none; rotate: none; }
+  /* Las etiquetas giran como fichas */
+  .js .timeline .chips li, .js .jobs .chips li { opacity: 0; rotate: y 90deg; scale: .7; transition: opacity .5s var(--ease), rotate .7s var(--ease), scale .7s var(--ease); transition-delay: calc(var(--i, 0) * 60ms + 600ms); }
+  .js .in .chips li { opacity: 1; rotate: none; scale: 1; }
+  /* El punto de cada etapa se enciende al llegar */
+  .js .timeline > li::before { scale: 0; transition: scale .7s cubic-bezier(.3, 1.8, .5, 1) .2s; }
+  .js .timeline > li.in::before { scale: 1; animation: dot-ping 1.4s ease-out .5s; }
+  @keyframes dot-ping { 0% { box-shadow: 0 0 0 0 rgba(255, 196, 107, .7); } 100% { box-shadow: 0 0 0 16px rgba(255, 196, 107, 0); } }
+  .study li:hover { border-color: rgba(255, 196, 107, .35); }
+  .study li:hover > b { text-shadow: 0 0 12px rgba(255, 196, 107, .6); }
+}

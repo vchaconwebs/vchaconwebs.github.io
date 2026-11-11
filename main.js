@@ -529,3 +529,22 @@ copyBtn.addEventListener('click', () => {
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Trayectoria: orden de aparición y línea que se dibuja con el scroll */
+document.querySelectorAll('.study, #trayectoria .chips').forEach((list) => {
+  [...list.children].forEach((li, i) => li.style.setProperty('--i', i));
+});
+const timeline = document.querySelector('.timeline');
+if (timeline) {
+  if (reduceMotion) timeline.style.setProperty('--p', 1);
+  else {
+    const drawLine = () => {
+      const r = timeline.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (innerHeight * 0.7 - r.top) / r.height));
+      timeline.style.setProperty('--p', p.toFixed(3));
+    };
+    addEventListener('scroll', drawLine, { passive: true });
+    addEventListener('resize', drawLine);
+    drawLine();
+  }
+}
