@@ -317,9 +317,9 @@ main, .footer { position: relative; z-index: 3; }
 /* ---------- Trayectoria ---------- */
 .timeline { margin-top: 44px; position: relative; display: grid; gap: 30px; padding-left: 30px; }
 .timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(var(--cool), var(--amber) 35%, var(--stroke)); }
-.timeline li { position: relative; display: grid; gap: 6px; }
-.timeline li::before { content: ""; position: absolute; left: -30px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--amber); }
-.timeline li:first-child::before { border-color: var(--cool); box-shadow: 0 0 14px var(--cool); }
+.timeline > li { position: relative; display: grid; gap: 6px; }
+.timeline > li::before { content: ""; position: absolute; left: -30px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--amber); }
+.timeline > li:first-child::before { border-color: var(--cool); box-shadow: 0 0 14px var(--cool); }
 .timeline__when { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
 .timeline h3 { font-family: var(--f-display); font-size: clamp(1.4rem, 2.4vw, 1.85rem); line-height: 1.05; letter-spacing: -.025em; }
 .timeline p { color: var(--muted); }
@@ -376,3 +376,12 @@ main, .footer { position: relative; z-index: 3; }
   .js .reveal.in { opacity: 1; transform: none; }
   .js .reveal.in.tilt { transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
 }
+
+/* Módulos de cada grado */
+.study { display: grid; gap: 10px; margin: 10px 0 6px; }
+.study li { display: grid; gap: 4px; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--stroke); background: var(--glass); }
+.study li > b { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); font-weight: 500; }
+.study li > span { color: var(--muted); font-size: .95rem; line-height: 1.55; }
+.study li > span b { color: var(--ink); font-weight: 600; }
+.timeline .chips { margin-top: 6px; }
+.jobs .chips { margin-top: 6px; }
